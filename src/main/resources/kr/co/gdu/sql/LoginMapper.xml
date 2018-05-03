@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="login">
+  <select id="select" resultType="hashmap">
+    select * from login.info
+  </select>
+  <insert id="insert" parameterType="hashmap">
+  	insert into login.info (ID, PW, 이름,설명) values (#{ID}, #{PW}, #{이름}, #{설명})
+  </insert>
+   <insert id="login" parameterType="hashmap">
+  	insert into login.info (ID, PW) values (#{ID}, #{PW})
+  </insert>
+  <select id="selectID" parameterType="hashmap" resultType="hashmap">
+	select * from login.info where ID = #{ID}
+  </select>
+    <select id="selectOne" parameterType="hashmap" resultType="hashmap">
+	select * from login.info where ID = #{ID} and PW = #{PW}
+  </select>
+    <select id="selectupdate" parameterType="hashmap">
+	update login.info SET PW = #{PW}, 이름 = #{이름}, 설명 = #{설명} where ID = #{ID}
+  </select>
+  <select id="id" resultType="hashmap">
+	select ID from login.info 
+  </select>
+</mapper>
